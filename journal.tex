@@ -1,0 +1,367 @@
+%------------------------------------------------------------------------------
+% Beginning of journal.tex
+%------------------------------------------------------------------------------
+%
+% AMS-LaTeX version 2 sample file for journals, based on amsart.cls.
+%
+%        ***     DO NOT USE THIS FILE AS A STARTER.      ***
+%        ***  USE THE JOURNAL-SPECIFIC *.TEMPLATE FILE.  ***
+%
+% Replace amsart by the documentclass for the target journal, e.g., tran-l.
+%
+\documentclass{amsart}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+%    Absolute value notation
+\newcommand{\abs}[1]{\lvert#1\rvert}
+
+%    Blank box placeholder for figures (to avoid requiring any
+%    particular graphics capabilities for printing this document).
+\newcommand{\blankbox}[2]{%
+  \parbox{\columnwidth}{\centering
+%    Set fboxsep to 0 so that the actual size of the box will match the
+%    given measurements more closely.
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}%
+  }%
+}
+
+\begin{document}
+
+\title{ }
+
+%    Information for first author
+\author{}
+%    Address of record for the research reported here
+%\address{Department of Mathematics, Louisiana State University, Baton
+%Rouge, Louisiana 70803}
+%    Current address
+%\curraddr{Department of Mathematics and Statistics,
+%Case Western Reserve University, Cleveland, Ohio 43403}
+%\email{xyz@math.university.edu}
+%    \thanks will become a 1st page footnote.
+%\thanks{The first author was supported in part by NSF Grant \#000000.}
+
+%    Information for second author
+%\author{Author Two}
+%\address{Mathematical Research Section, School of Mathematical Sciences,
+%Australian National University, Canberra ACT 2601, Australia}
+%\email{two@maths.univ.edu.au}
+%\thanks{Support information for the second author.}
+
+%    General info
+%\subjclass[2000]{Primary 54C40, 14E20; Secondary 46E25, 20C20}
+
+%\date{January 1, 2001 and, in revised form, June 22, 2001.}
+
+%\dedicatory{This paper is dedicated to our advisors.}
+
+%\keywords{Differential geometry, algebraic geometry}
+
+\begin{abstract}
+This paper is ...
+\end{abstract}
+
+\maketitle
+
+%\section*{This is an unnumbered first-level section head}
+%This is an example of an unnumbered first-level heading.
+
+%% The correct journal style for \specialsection is all uppercase; a known bug
+%% in amsart.cls prevents this, so input must be uppercase until it is fixed.
+%\specialsection*{This is a Special Section Head}
+%\specialsection*{THIS IS A SPECIAL SECTION HEAD}
+%This is an example of a special section head%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\footnote{Here is an example of a footnote. Notice that this footnote
+%text is running on so that it can stand as an example of how a footnote
+%with separate paragraphs should be written.
+%\par
+%And here is the beginning of the second paragraph.}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%.
+
+\section{Introduction}
+Consider the image in an evolution way from the natural physical rules.
+For a target image $u(t)$,  the image scale space changes with time. 
+Further we define a companion signal $v(t)$ as the indicator signal.
+It changes with time and guide the evolution of $u(t)$ by collecting  large scale information in the image.
+The two signals evolve in two coupled scale spaces.
+
+In Maxwell's equations, a set of PDEs describing how the electric and magnetic fields relate to their sources and how they develop with time.
+Former the PDE based optimal control method had been proposed for computer vision tasks such as edge detection and feature learning.
+Here we consider the evolution with cellular automata based theories, with the application in feature learning applications.
+
+\section{Basics and notations}
+We assume that feature extraction is an evolution process which can be described by certain kind of time-dependent tools like PDE equations, cellular automata, and cellular neural networks.
+First we introduce the PDE based idea, then the cellular neural networks, the cellular automata tools can be considered as a special kind of cellular neural networks.
+Before the introduction, here are the notations:
+
+\begin{center}
+\begin{tabular}{clcl}
+\hline
+Notation    & Description & Notation & Description \\
+\hline
+${u}$  &  image  & ${u}|_{t}$  & evolution of input image \\
+$\mathbf{\Omega}$  & open bounded region in $\mathbf{R}^2$ &$\partial{\mathbf{\Omega}}$  & Boundary of   $\mathbf{\Omega}$  \\
+$\mathbf{Q}$       & $\mathbf{\Omega} \times [0, T]$     &  $\mathbf{\Gamma}$   & $\partial{\mathbf{\Omega}}\times [0, T]$   \\
+$\nabla {u}$       & gradient of $u$     & $\mathbf{H}_{u}$     & Hessian matrix of $u$ \\
+$I_m$ & $m$-th training image      & $h_m$     &   the label of $m$-th  image  \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Image evolution for computer vision with PDE system}
+The input of the PDE system (initial condition) is  the original image. 
+The output of the PDE system is the feature of the image in classification tasks.
+The time-dependent operations resemble different steps of information processing.
+The proposed system has the illustration of:
+\begin{equation}
+ \left\{
+  \begin{array}{lr}
+    \frac{\partial u}{\partial t} = F(u, x, y, t), \quad (x, y, t) \in \mathbf{Q}\\
+	u(x, y, t) = 0, \quad (x, y, t) \in  \mathbf{\Gamma} \\
+	u|_{t=0}(x, y, t) = \mathbf{I}, \quad (x, y)\in \mathbf{\Omega}
+  \end{array}
+\right.
+\end{equation}
+where $\mathbf{I}$ is the input images, $\mathbf{\Omega}$ is the rectangular region of image evolved from $\mathbf{I}$.
+
+
+$F$ is a function of image $\mathbf{u}$ and time $t$. Different choices of $F$ illustrate different evolution PDE rules. 
+It is not possible to directly determine the PDE equations in a classification task.
+The former work use some translational and rotational invariants.
+These fundamental differential invariants are invariants under translation and rotation and any other invariant can be written as their function, see Table \ref{pdeinvariants}:
+
+\begin{center}
+\label{pdeinvariants}
+\begin{tabular}{cl}
+\hline
+i    & $i$-th invariants of $u$ \\
+\hline
+$0$  &  1   \\
+$1$  &  $u$   \\
+$2$  &  $|| \nabla u ||^2  = u_x^2 + u_y^2  $\\
+$3$  &  $tr(\mathbf{H}_u) = u_{xx} + u_{yy} $  \\
+$4$  &  $(\nabla u) ^T\mathbf{H}_u\nabla u= u_x^2u_{xx} + 2u_xu_yu_{xy} + u_y^2u_{yy} $\\
+$5$  &  $tr(\mathbf{H}_u^2) = u_{xx}^2 + 2u_{xy}^2 + u_{yy}^2$   \\
+\hline
+\end{tabular}
+\end{center}
+Based on the fundamental differential invariant, a nonlinear mapping function:
+\begin{equation}
+g(x) = \frac{x}{1 + |x|}
+\end{equation}
+was added on each invariant, making it nearly invariant under gray-level scaling.
+$F$ is a linear combination of transformed fundamental differential invariants, formulated as:
+
+\begin{equation}
+F(u, x, y, t) = \sum_{i=0}^5 a_i(x, y, t) g(inv_i(u(t)))
+\end{equation}
+where $\{a_i(x, y, t)\}_{i=0}^5$ are parameters to be determined.
+
+With a determined parameter set, the classification tasks can be performed in a classification scheme, which would be illustrated later.
+Since PDE transforms could be discretized, and have lots of similarities with cellular automata and cellular neural networks schemes. 
+It is straightforward to think about these tools as a replacement because of their discrete properties.
+
+
+
+\subsection{Comparison of PDE, CA, and CNN}
+Partial differential equation, cellular automata, and cellular neural network share a common property, their behavior depend only on their spatial local interactions.
+Consider the example of the PDE of heat equation:
+
+\begin{equation}
+\label{heatequation}
+\frac{\partial u(x, y, t)}{\partial t} = D \left( \frac{\partial^2 u(x,y,t)}{\partial{x}^2} + \frac{\partial^2 u(x,y,t)}{\partial{y}^2} \right) 
+\end{equation}
+The solution of the heat equation is a continuous function of time $t$ and the spatial variable $x$ and $y$.
+If the function $u(x, y, t) $ is approximated by a set of functions (each function can be considered as the image pixel state function):
+\begin{equation}
+u_{ij}(t) = u(ih_x, ih_y, t)
+\end{equation}
+assume $h_x = h_y = 1$ and discrete the time scale, we have
+\begin{equation}
+\frac{u_{i, j}^{n+1} - u_{i, j}^n}{\Delta t} = D \left[ \frac{u_{i+1, j}^n - 2u_{i, j}^n + u_{i-1, j}^n}{(\Delta x)^2} + \frac{u_{i, j+1}^n - 2u_{i, j}^n + u_{i,  j-1}^n}{(\Delta y)^2}\right] 
+\end{equation}
+by choosing $\Delta t = \Delta x = \Delta y =1$, we have
+
+\begin{equation}
+u_{i, j}^{n+1} = D[u_{i+1, j}^n + u_{i-1, j}^n + u_{i, j+1}^n + u_{i, j-1}^n]  + (1 - 4D)u_{i, j}^n
+\end{equation}
+with a generic form
+\begin{equation}
+u_{i, j} ^{n+1} = \sum_{k, l = -r}^r a_{k, l} u_{i+k, j +l}^n
+\end{equation}
+where the summation is over the neighborhood of $4r+1$. 
+This is a finite-state cellular automaton with coefficients $a_{k, l} $, for this case we have $a_{-1, 0} = a_{+1, 0} = a_{0, -1} = a_{0, +1} = D, a_{0, 0} = 1-4D$ with $r=1$.
+
+We can see that the remarkable similarity between PDE and CA from the transformations.
+They are both ordinary differential equations with a certain neighborhood involved with dynamic rules.
+
+For cellular neural networks, the general form is:
+\begin{equation}
+\label{cnnState}
+\begin{split}
+\frac{d}{dt}s_{ij} = -s_{ij} + \sum_{C(k,l) \in \mathcal{N}_{ij}(r)}A(i, j, k, l)v_{kl} + \sum_{C(k,l) \in \mathcal{N}_{ij}(r)}B(i, j, k, l)u_{kl} + z_{ij} \\
+v_{ij} = f(s_{ij}) = \frac{1}{2}|s_{ij} + 1| - |s_{ij} - 1|
+\end{split}
+\end{equation}
+we can see that there is a nonlinear mapping from the previous states and their neighbor cells.
+The similarities and differences for they three are:
+
+\begin{center}
+\label{pdeinvariants}
+\begin{tabular}{cccc}
+\hline
+Model & Cellular Neural Networks & PDE & 2D-Cellular Automata\\
+\hline
+time &  continuous  & continuous & continuous \\
+space &  discrete  & continuous & discrete \\
+state value &  real   & real & binary \\
+dynamics &  nonlinear  & linear (for \ref{heatequation})  & nonlinear\\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+
+
+
+\subsection{Using CNN System Design for Computer Vision}
+In section 2.1 we consider the PDE based invariants, so the thinking here is: if we the invariants can be expressed in a cellular neural networks form?
+Then with different CNN templates combinations, or with different CA transform kernels (continuous CA rules), we can use the similar classification computing framework to solve the computer vision problems.
+Before get into the details, first consider the discretize of the PDE operators for evolution.
+
+PDE is a continuous space based operation. To deal with vision problems, PDE need to be discretized.
+For an image $u$ with PDE operators we have:
+\begin{equation}
+u^{n+1} = u^{n} + \Delta t \sum_{i=0}^5 a_i^n \cdot g(inv_i(u^n))
+\end{equation}
+where $n = 0, 1,\cdots, N-1$, and $\Delta t$ is the time interval.
+For each $inv_i(u^n))$, consider for the cells of $u$, each cell $u_{i,j}$ is determined by the operators with their parameters.
+Using central difference to approximate the spatial derivatives:
+
+\begin{equation}
+  \begin{cases}
+  \frac{\partial f}{\partial x} = \frac{f(x+1) - f(x-1)}{2} \\
+  \frac{\partial f}{\partial y} = \frac{f(y+1) - f(y-1)}{2} \\
+  \frac{\partial ^2 f}{\partial x^2} = f(x+1) - 2f(x) + f(x-1) \\
+  \frac{\partial ^2 f}{\partial y^2} = f(y+1) - 2f(y) + f(y-1) \\
+  \frac{\partial ^2 f}{\partial xy} =  \frac{1}{4}[ f(x+1, y+1) + f(x-1, y-1) - f(x+1, y-1) - f(x-1, y+1)]\\
+    \end{cases}
+\end{equation}
+
+
+
+
+
+
+
+
+\subsubsection{Continuous Cellular Automata}
+First we consider a special case of cellular neural networks, the continuous cellular automata. 
+In the above sections, we have the cloning template $\{\mathbf{A}, \mathbf{B}, \mathbf{z}\}$. The continuous cellular automata ignores the feedback and threshold, so the so-called control matrix $\mathbf{B}$ is what we cared here.
+Then we have the following continuous cellular automata based dynamical system:
+\begin{equation}
+\label{cnnEvolution}
+  \begin{cases}
+    \frac{\partial \mathbf{u}}{\partial t} = F(\mathbf{u},  \mathbf{B}, x, y, t), &  (x, y, t) \in \mathbf{Q}\\
+	\mathbf{u}(x, y, t) = 0, & (x, y, t) \in  \mathbf{\Gamma} \\
+	\mathbf{u}|_{t=0}(x, y, t) = \mathbf{I}, & (x, y)\in \mathbf{\Omega}
+  \end{cases}
+\end{equation}
+where 
+$F = -  \mathbf{u}(t)  + \mathbf{u}(t) * \mathbf{B}(t)$.
+Normally $\mathbf{I}$ will be padded with zeros of several pixels width around according to the neighborhood size $r$.
+The size of control matrix $\mathbf{B}(t)$ is $(2r + 1) \times (2r + 1)$, and $\mathbf{B} $ is a function of time only.
+
+In computer vision task, the pixels are considered as the cells of CNN. The states are the intensities of the pixels, we use state and intensity equivalently. During the system evolution at time $t$, the pixels intensity in $\mathbf{u}_t$ is decided by its neighbors and the time dependent control matrix at $t$ i.e. $\mathbf{B}(t)$.
+Then the state equation could be 
+\begin{equation}
+\frac{d}{dt}s_{ij} = -s_{ij}  + \sum_{C(k,l) \in \mathcal{N}_{ij}(r)}B(i, j, k, l)u_{kl} 
+\end{equation}
+where the corresponding parameters are the same as \ref{cnnState}.
+
+\subsubsection{Cellular Neural Network}
+%Most tradition evolution for images only consider the target image signal $\mathbf{u}(t)$ like the CCA settings.  In PDE based evolution system in (reference), a companion signal $\mathbf{v}(t)$ named as indicator signal .
+In general, cellular neural networks can be characterized by ordinary differential equations.
+By studying its dynamics we can exploit the spatial properties in a similar way as PDE and cellular automata.
+They share a common property: the dynamic behavior depend only on the spatial local interactions.
+
+\section{CNN Template System for Classification}
+Given the evolution rules in \ref{cnnEvolution}, we have to determine the template parameters of $\mathbf{B}(t)$.
+We may prepare training samples $\{(\mathbf{I}_m, \mathbf{O}_m)\}_{m=1}^M$, where $\mathbf{I}_m$ is the input image and $\mathbf{O}_m$ is the expected output image. This could be used in edge detection, image de-noising,  blurring and de-blurring computer vision tasks.
+
+
+\subsection{CCA evolution for feature learning}
+In classification tasks, after obtaining the feature $\mathbf{u}_m|_{t=T}$ from the input image $\mathbf{I}_m$, we need a classifier for classification.
+For supervised learning we have training samples $\{(\mathbf{I}_m, h_m)\}_{m=1}^M$, where $\mathbf{I}_m$ is the $m$-th input image, and $h_m$ is the corresponding label. Here we use tag vector with 1 at the $k$-th entry if the input belongs to class $k$, $M$ is the number of samples.
+For each input image $\mathbf{I}_m$, we can obtain a feature map $\mathbf{u}_m|_{t=T}$ by the CNN templates based transformations.
+Then we have the learning model can be formulated as finding a certain function $F(\mathbf{u},  \mathbf{B}, x, y, t)$ and paramters $\mathbf{W}$ of a classifier to minimize a loss function $L$ with a regularization term $J$:
+\begin{equation}
+\label{lossfunc}
+\min_{F, \mathbf{W}} E = \frac{1}{M} \sum_{m=1}^M L(\mathbf{W}; \mathbf{u}_m|_{t=T}, h_m) + \lambda J(\mathbf{W})
+\end{equation}
+where $\mathbf{u}_m$ satisfies the CNN based evolution system with $\mathbf{u}_m|_{t=0}$ and $\lambda > 0$ is a trade-off parameter.
+
+We use linear classifier for multi-class classification, also we adopt the hinge loss as the lost function.
+Then the object function in \ref{lossfunc} for multivariate ridge regression classifier is :
+\begin{equation}
+E = \frac{1}{M}\lVert \mathbf{H} - \mathbf{W} \cdot \mathbf{U}|_{t=T} \rVert_F^2 + \lambda \lVert \mathbf{W} \rVert_F^2
+\end{equation}
+where $\mathbf{H} = [h_1, h_2, \dots h_M]$.
+$\mathbf{u}_m|_{t=T}$ the a matrix of the same size as the input image $\mathbf{I}_m$, which had been transformed by the continuous cellular automata evolutions. $\mathbf{W}$ will be a matrix with size of $k \times d$, where  $k$ is the number of categories, while $d = D_1 \times D_2$ is the CNN cell size i.e. the image pixels numbers.
+We set $\mathbf{U}|_{t=T} = [vec(\mathbf{u}_1|_{t=T}), vec(\mathbf{u}_2|_{t=T}), \dots, vec(\mathbf{u}_m|_{t=T})]$. The class label $k^*$ can be obtained via:
+\begin{equation}
+k^* = \arg \max_k\{p_k\}
+\end{equation}
+where $p = \mathbf{W} \cdot vec(\mathbf{u}|_{t=T})$ is the label vector and $\mathbf{u}$ satisfies the CNN system with $\mathbf{u}|_{t = 0} = \mathbf{I}$.
+
+Integrating the feature extraction and classifier, we have the general model for CCA system based feature learning model:
+\begin{equation}
+\begin{split}
+\min_{F, \mathbf{W}} E = \frac{1}{M} \sum_{m=1}^M L(\mathbf{W}; \mathbf{u}_m|_{t=T}, h_m) + \lambda J(\mathbf{W}) \\
+s.t.    \begin{cases}
+    \frac{\partial \mathbf{u}}{\partial t} = F(\mathbf{u},  \mathbf{B}, x, y, t), &  (x, y, t) \in \mathbf{Q}\\
+	\mathbf{u}(x, y, t) = 0, & (x, y, t) \in  \mathbf{\Gamma} \\
+	\mathbf{u}|_{t=0}(x, y, t) = \mathbf{I}, & (x, y)\in \mathbf{\Omega} \\
+	F = -  \mathbf{u}(t)  + \mathbf{u}(t) * \mathbf{B}(t)
+  \end{cases} 
+\end{split}
+\end{equation}
+where the summation is over the $4r + 1$ neighborhood.
+This is a finite-state cellular automaton with the coefficient $a_{k, l}$ being determined from the discretization of the governing equations.
+
+
+
+%\subsection{This is a numbered second-level section head}
+%This is an example of a numbered second-level heading.
+
+%\subsection*{This is an unnumbered second-level section head}
+%This is an example of an unnumbered second-level heading.
+
+%\subsubsection{This is a numbered third-level section head}
+%This is an example of a numbered third-level heading.
+
+%\subsubsection*{This is an unnumbered third-level section head}
+%This is an example of an unnumbered third-level heading.
+
+\end{document}
+
+%------------------------------------------------------------------------------
+% End of journal.tex
+%------------------------------------------------------------------------------
